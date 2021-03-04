@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>se.mejsla.vassare.fxgl</groupId>
+    <artifactId>mazela-man</artifactId>
+    <packaging>pom</packaging>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <source.version>11</source.version>
+    </properties>
+
+    <modules>
+        <module>00-introduction</module>
+        <module>01-chapter-1</module>
+        <module>02-chapter-2</module>
+        <module>03-chapter-3</module>
+        <module>04-chapter-4</module>
+        <module>05-chapter-5</module>
+        <module>06-chapter-6</module>
+        <module>07-chapter-7</module>
+        <module>08-chapter-8</module>
+        <module>09-chapter-9</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.almasb</groupId>
+                <artifactId>fxgl</artifactId>
+                <version>11.13</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${source.version}</source>
+                    <target>${source.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
