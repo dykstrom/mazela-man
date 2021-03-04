@@ -38,7 +38,7 @@ for pinky, inky, and clyde.
 
 ### Entity Factory
 
-Next we want to create a spawn method for enemies. In the MazelaManFactory, we add:
+Next we want to create a spawn method for enemies. In the `MazelaManFactory`, we add:
 
 ```java
     @Spawns("Ghost")
@@ -52,15 +52,15 @@ Next we want to create a spawn method for enemies. In the MazelaManFactory, we a
     }
 ```
 
-Here we build a collidable entity of type GHOST (which must be added to the EntityType enum) with 
-a GhostComponent. When creating the GhostComponent instance, we provide it with parts of 
-the spawn data entered in Tiled. Our next task will be to create the GhostComponent class.
+Here we build a collidable entity of type `GHOST` (which must be added to the `EntityType` enum) 
+with a `GhostComponent`. When creating the `GhostComponent` instance, we provide it with parts of 
+the spawn data entered in Tiled. Our next task will be to create the `GhostComponent` class.
 
 
 ### GhostComponent
 
-We already know how a component class should look. It should inherit Component, and if it
-handles the entity view, it should add a texture in the onAdded callback method. Here we use
+We already know how a component class should look. It should inherit `Component`, and if it
+handles the entity view, it should add a texture in the `onAdded` callback method. Here we use
 the name of the enemy to load the correct images.
 
 ```java
@@ -98,7 +98,7 @@ Running the game now will provide us with a nice, albeit very static enemy.
 ### Adding AI
 
 To make blinky move, we will add an update method, and very limited AI. By overriding the
-onUpdate method, we can move the ghost entity a little every tick.
+`onUpdate` method, we can move the ghost entity a little every tick.
 
 ```java
     private static final double SPEED = 100.0;
@@ -113,16 +113,16 @@ onUpdate method, we can move the ghost entity a little every tick.
     }
 ```
 
-You may have noted that we did not set any PhysicsComponent on the ghost entity. Therefore,
+You may have noted that we did not set any `PhysicsComponent` on the ghost entity. Therefore,
 the ghost entity is not controlled by the physics engine. Instead, we control it ourselves
 by calling the translate methods.
 
-The argument to the onUpdate method, tpf, means "time per frame". That is the amount of 
+The argument to the onUpdate method, `tpf`, means "time per frame". That is the amount of 
 time in seconds that is spent on each frame and will vary depending on the speed of the 
 computer. Dividing 1 by the time per frame gives the number of frames per second, or FPS. 
 
 The time per frame can be used to make an entity move with a constant speed independent of
-the speed of the computer. By multiplying dx and dy with tpf, we will move the entity at
+the speed of the computer. By multiplying `dx` and `dy` with `tpf`, we will move the entity at
 a constant speed even if the FPS varies. And the FPS _will_ vary depending on what else 
 happens in the game, and depending on when the Java just-in-time compiler kicks in.
 
@@ -135,7 +135,7 @@ through the walls.
 ### Collision Detection
 
 The player and the enemies are already collidable, but the walls are not. A small update
-to the spawnWall method fixes that.
+to the `spawnWall` method fixes that.
 
 ```java
     @Spawns("Wall")
@@ -149,7 +149,7 @@ to the spawnWall method fixes that.
     }
 ```
 
-Next, we add a collision handler for a ghost and a wall. In initPhysics, we add:
+Next, we add a collision handler for a ghost and a wall. In `initPhysics`, we add:
 
 ```java
         physics.addCollisionHandler(new CollisionHandler(EntityType.GHOST, EntityType.WALL) {
@@ -160,10 +160,10 @@ Next, we add a collision handler for a ghost and a wall. In initPhysics, we add:
         });
 ```
 
-Again, the order of the constructor arguments to CollisionHandler decides the order of the
-arguments to the callback method onCollisionBegin. The new collision handler gets the
-GhostComponent and calls a method turn on it. So we return to the GhostComponent, and 
-create the turn method and its helper method getRandomSpeedAndDirection.
+Again, the order of the constructor arguments to `CollisionHandler` decides the order of the
+arguments to the callback method `onCollisionBegin`. The new collision handler gets the
+`GhostComponent` and calls a method turn on it. So we return to the `GhostComponent`, and 
+create the `turn` method and its helper method `getRandomSpeedAndDirection`.
 
 ```java
     private static final Random RANDOM = new Random();
@@ -207,22 +207,22 @@ create the turn method and its helper method getRandomSpeedAndDirection.
 
 There seems to be much going on here, but in reality we are just doing almost the same thing
 for a number of different cases. The first if-else statement has to do with changing the
-direction of the entity by setting dx and dy to new values. The second if-else statement
+direction of the entity by setting `dx` and `dy` to new values. The second if-else statement
 changes the view of the entity depending on the direction it moves.
 
-The logic of the first if-else statement is "if the entity is moving left or right, it
+The logic of the first if-else statement is _if the entity is moving left or right, it
 will randomly turn up or down, and if the entity is moving up or down, it will randomly
-turn left or right". That is all there is to the AI of the ghosts in this implementation.
+turn left or right_. That is all there is to the AI of the ghosts in this implementation.
 "But wait, you say, what about the entity.translateX(2) and similar statements?" Yes, 
 that is a hack to overcome a limitation in the collision detection. Since we are not 
 using the physics engine to detect the collisions between ghosts and walls, the entities
-do not stop automatically when they collide. When the onCollisionBegin method is called,
+do not stop automatically when they collide. When the `onCollisionBegin` method is called,
 the entities _have already_ collided, and are now overlapping in the game world. If we 
 just change direction and move on, the collision will still be going on, which will cause
 problems with the next collision. To avoid that, we move the entity back two pixels in
 the direction it came from, which ends the collision. This does not feel like an optimal 
-solution, but it is some kind of solution. Probably, the real solution is to use the physics engine
-for ghost-wall collisions as well...
+solution, but it is some kind of solution. Probably, the real solution is to use the physics 
+engine for ghost-wall collisions as well...
 
 The second if-else statement does not contain any mysteries. Depending on the direction
 the entity is now travelling we add the correct texture to the view, after first removing 
@@ -233,8 +233,8 @@ the old texture to avoid having duplicate textures in the view.
 
 Hopefully, the ghost or ghosts can now move around in the maze, but we also want to
 detect collisions between the player and a ghost. In case of a player-ghost collection,
-both entities should respawn at their original locations. The GhostComponent already
-knows its original location, but the PlayerComponent must be updated to know that too.
+both entities should respawn at their original locations. The `GhostComponent` already
+knows its original location, but the `PlayerComponent` must be updated to know that too.
 
 ```java
     private final double x;
@@ -247,10 +247,10 @@ knows its original location, but the PlayerComponent must be updated to know tha
     }
 ```
 
-The spawnPlayer method must also be updated to provide the constructor with x and y
-like the spawnGhost method already does.
+The `spawnPlayer` method must also be updated to provide the constructor with x and y
+like the `spawnGhost` method already does.
 
-We can now add methods to respawn entities in both PlayerComponent and GhostComponent.
+We can now add methods to respawn entities in both `PlayerComponent` and `GhostComponent`.
 Respawning is as easy as removing the entity from the world and spawning it again using
 the saved location, and, in the case of ghosts, the saved name.
 
@@ -279,7 +279,7 @@ public class GhostComponent extends Component {
 ```
 
 The final step is adding a collision handler that handles player-ghost collisions. In
-initPhysics we add:
+`initPhysics` we add:
 
 ```java
         physics.addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.GHOST) {
@@ -295,7 +295,7 @@ initPhysics we add:
 
 In this collision handler we respawn not only the ghost that collided, but _all_ ghosts, 
 making all ghosts return to their original locations. Here we get all entities of type
-GHOST, but there are many more ways to get entities from the game world. For example, you
+`GHOST`, but there are many more ways to get entities from the game world. For example, you
 can get the closest entity to a point, or all entities within an area. You can also get
 all entities that satisfy a predicate. All depends on the type of game you are working 
 on.

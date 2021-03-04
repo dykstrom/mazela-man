@@ -1,4 +1,4 @@
-## Reacting to Input
+## Handling Input
 
 Now we have set the scene for our game. The next step is to make it interactive. We want the
 player character to move when we press a key. FXGL has bindings for both keyboard and mouse 
@@ -9,7 +9,7 @@ input, but in this tutorial we will only use keyboard input.
 
 To move the player entity, we first must retrieve it from the game world somehow. To do this
 we need to define an enum that serves as the entity type. Do not confuse the entity type with 
-the type string used in Tiled to make FXGL spawn an entity. The enum EntityType is used when
+the type string used in Tiled to make FXGL spawn an entity. The enum `EntityType is used when
 finding entities in a live game world.
 
 ```java
@@ -18,8 +18,8 @@ public enum EntityType {
 }
 ```
 
-Now we can modify the spawnPlayer method to set this type on the entity being created. We call
-the builder method type.
+Now we can modify the `spawnPlayer` method to set this type on the entity being created. We call
+the builder method `type`.
 
 ```java
     @Spawns("Player")
@@ -31,8 +31,8 @@ the builder method type.
         }
 ```
 
-The spawned player will now have the entity type PLAYER, and FXGL lets us find entities by
-type. We add a convenience method to MazelaManApp to get the player entity.
+The spawned player will now have the entity type `PLAYER`, and FXGL lets us find entities by
+type. We add a convenience method to `MazelaManApp` to get the player entity.
 
 ```java
     private static Entity getPlayer() {
@@ -45,8 +45,8 @@ type. We add a convenience method to MazelaManApp to get the player entity.
 
 When we have a way to get the player entity, so it can be updated, we need to tell FXGL that
 we are interested in certain key presses by registering user actions for those keys. The FXGL
-GameApplication base class has a callback method we can override to do that. It is called
-initInput. In this method we can call one or more methods on the FXGL facade to register the
+`GameApplication` base class has a callback method we can override to do that. It is called
+`initInput`. In this method we can call one or more methods on the FXGL facade to register the
 user actions, like this:
 
 ```java
@@ -57,22 +57,22 @@ user actions, like this:
     }
 ```
 
-The code above registers a user action that runs when the A key is pressed. The name of the
+The code above registers a user action that runs when the `A` key is pressed. The name of the
 action is "Move Left". This name actually has a meaning, as we will see soon. When the action 
 runs, we get the player entity and move it some amount to the left. For this to work, we 
-obviously need to define the constant SPEED as well.
+obviously need to define the constant `SPEED` as well.
 
 ```java
     private static final int SPEED = 2;
 ```
 
-The methods translateX and translateY move the entity relative to its current location. There
-are also methods setX and setY that move the entity to an absolute location. Note that there
+The methods `translateX` and `translateY` move the entity relative to its current location. There
+are also methods `setX` and `setY` that move the entity to an absolute location. Note that there
 is no physics involved here. There are no forces that affect the entity. It only moves when
 we tell it to move.
 
 There are other ways to register user actions. If you want more fine-grained control of how
-to react to button presses, you can instead register a UserAction instance, and override the
+to react to button presses, you can instead register a `UserAction` instance, and override the
 methods you need.
 
 ```java
@@ -88,7 +88,7 @@ methods you need.
         }, KeyCode.A);
 ```
 
-To finish up, here is the complete initInput method.
+To finish up, here is the complete `initInput` method.
 
 ```java
     @Override

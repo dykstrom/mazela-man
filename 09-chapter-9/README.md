@@ -24,8 +24,8 @@ functionality that we have not looked at:
 * Multiplayer support and networking
 * Support for web and mobile
 
-On the [FXGL](https://github.com/AlmasB/FXGL) GitHub page you can find links to more 
-tutorials, both written and in video format.
+On the [FXGL](https://github.com/AlmasB/FXGL) GitHub pages you can find links to more 
+tutorials, both in written format, and in the form of YouTube videos.
 
 [[Back](../08-chapter-8/README.md)]
 [[Up](../README.md)]

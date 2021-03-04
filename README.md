@@ -27,7 +27,9 @@ The following pieces of software are needed to follow the tutorial:
   version 1.2.3 of the Tiled map editor. You only need to install Tiled if you want to edit 
   level files yourself. Otherwise, you can just copy the edited file from the next chapter. 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea), [Eclipse](https://www.eclipse.org/eclipseide), 
-  or another IDE.  
+  or another IDE.
+* [Maven](http://maven.apache.org/index.html). The tutorial is a Maven project, and you need 
+  Maven to build it. Maven may or may not be included in your IDE.
 
 You also need to clone the Git repository of the tutorial. You can do this in your IDE, or
 on the command line:
@@ -35,6 +37,24 @@ on the command line:
 ```shell
 git clone https://github.com/dykstrom/mazela-man.git
 ```
+
+
+## Getting Started
+
+The best way to start is [from the beginning](00-introduction/README.md).
+
+You can also jump directly to a specific chapter:
+
+* [00 Introduction](00-introduction/README.md)
+* [01 Handling Input](01-chapter-1/README.md)
+* [02 Physics](02-chapter-2/README.md)
+* [03 Keeping Score](03-chapter-3/README.md)
+* [04 Animation](04-chapter-4/README.md)
+* [05 Adding Enemies](05-chapter-5/README.md)
+* [06 Multiple Levels](06-chapter-6/README.md)
+* [07 Bonus Points](07-chapter-7/README.md)
+* [08 Adding Sound](08-chapter-8/README.md)
+* [09 Conclusion](09-chapter-9/README.md)
 
 
 ## Resources
@@ -47,10 +67,3 @@ git clone https://github.com/dykstrom/mazela-man.git
 
 Graphics by drakzlin at [OpenGameArt.org](https://opengameart.org).
 Sounds from [FXGL samples](https://github.com/AlmasB/FXGL), and [Classic Gaming](http://www.classicgaming.cc).
-
-
-## Getting Started
-
-Let's get started with the first part of the tutorial:
-
-[[Start](00-introduction/README.md)]

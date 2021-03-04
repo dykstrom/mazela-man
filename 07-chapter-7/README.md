@@ -45,15 +45,15 @@ spawn-point, and one for the cherries.
 ```
 
 The cherry spawn-point is an invisible entity, so it does not have any view. The only 
-thing it _does_ have is a CherrySpawnComponent, which we will create shortly. The 
+thing it _does_ have is a `CherrySpawnComponent`, which we will create shortly. The 
 cherries are collidable entities with a view, and a bounding box created from the view.
-The cherries are of entity type CHERRY to enable them to be picked up by the player.
-The EntityType enum constant CHERRY must also be created.
+The cherries are of entity type `CHERRY` to enable them to be picked up by the player.
+The `EntityType` enum constant `CHERRY` must also be created.
 
 
 ### CherrySpawnComponent
 
-Here is the entire CherrySpawnComponent:
+Here is the entire `CherrySpawnComponent`:
 
 ```java
 public class CherrySpawnComponent extends Component {
@@ -88,7 +88,7 @@ public class CherrySpawnComponent extends Component {
 }
 ```
 
-The CherrySpawnComponent has an `onUpdate` method that is called on every tick. Every
+The `CherrySpawnComponent` has an `onUpdate` method that is called on every tick. Every
 time this method is called, there is one chance in 1000 to spawn a cherry, if there is
 not already a cherry at that position. Note that the component does not need to remember
 its own position, because it has access to the entity it is part of, and the entity has 

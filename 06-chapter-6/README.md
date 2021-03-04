@@ -9,7 +9,7 @@ eaten and the current level.
 
 To design a new level, it is probably easiest to copy your existing level and update it.
 Redesign the maze in any way you like, position the player, the ghost(s), and the pills
-by creating objects with type and name. Name the new level file level2.tmx.
+by creating objects with type and name. Name the new level file "level2.tmx".
 
 If you don't feel like doing all that work in Tiled, you can copy a ready-made
 [level2.tmx](../07-chapter-7/src/main/resources/assets/levels/level2.tmx) file. The maze
@@ -17,10 +17,10 @@ in this file looks like this:
 
 ![Level 2](docs/level2.png)
 
-The player object is the highlighted object close to the bottom.
+The Player object is the highlighted object close to the bottom.
 
 If you added any new ghosts to the new level, you will have to copy the textures for
-them to the textures folder. All availale resources can be found in the main 
+them to the textures folder. All available resources can be found in the main 
 [resources](../reources) folder. I added "pinky", who looks like this:
 
 ![Pinky Left](../reources/pinky-left.png)
@@ -49,8 +49,8 @@ to save the start level, and make a small addition to the main method.
 ```
 
 We save the current level as a game variable, and create a new method that initializes a
-level. The initGame method now calls initLevel instead of initializing the level itself.
-The `geti` method is again a convenience method in class FXGL for getting the value of an
+level. The `initGame` method now calls `initLevel` instead of initializing the level itself.
+The `geti` method is again a convenience method in class `FXGL` for getting the value of an
 integer game variable.
 
 ```java
@@ -72,11 +72,11 @@ integer game variable.
     }
 ```
 
-We want the level value to be visible in the UI, so we update the initUI method and add code for
-a new label. This is very similar to the score label. We create a JavaFX label, set some
+We want the level value to be visible in the UI, so we update the `initUI` method and add code
+for a new label. This is very similar to the score label. We create a JavaFX label, set some
 properties, and bind its text property to the property of the level game variable. In the
-bind call we also transform the level property of type Integer to a text property of type
-String. Finally, we add the label as a node at a specified position.
+bind call we also transform the level property of type `Integer` to a text property of type
+`String`. Finally, we add the label as a node at a specified position.
 
 ```java
     Label levelLabel = new Label();
@@ -91,8 +91,8 @@ String. Finally, we add the label as a node at a specified position.
 
 We want the player to progress to the next level, when all pills have been eaten. Since
 we don't know from the start how many they are, we have to count them. Let's do this in
-the initLevel method after we have loaded the level. We simply get all entities of type
-PILL, count them, and store the result in a game variable.
+the `initLevel` method after we have loaded the level. We simply get all entities of type
+`PILL`, count them, and store the result in a game variable.
 
 ```java
     // Store the number of pills on this level
@@ -117,8 +117,8 @@ next level.
     }
 ```
 
-The call to `initLevel` is enclosed in a call to `Platform.runLater`. This is done to let
-the current event handler finish executing before we delete the current scene and 
+The call to `initLevel` is enclosed in a call to `Platform.runLater`. This is done to
+let the current event handler finish executing before we delete the current scene and 
 replace it with something entirely different. `Platform` is a JavaFX class, and the same
 technique is used when working with events in JavaFX applications.
 

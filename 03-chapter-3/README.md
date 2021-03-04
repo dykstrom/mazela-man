@@ -32,7 +32,7 @@ In the entity factory, we add the corresponding spawn method.
     }
 ```
 
-We need to create a new enum constant in EntityType, and we need to copy the pill image to the
+We need to create a new enum constant in `EntityType`, and we need to copy the pill image to the
 textures folder from [here](../reources/pill.png).
 
 This time we don't create the bounding box automatically from the image. That is because the 
@@ -40,15 +40,15 @@ image is 20x20 pixels, but the actual pill is only 9x9 pixels. To make the colli
 better, we instead create a bounding box that is a little smaller than the image, trying to fit 
 it to the actual pill.
 
-We also call the collidable method on the builder, which is just a convenience method for 
-adding a CollidableComponent to the entity. This lets the entity take part in FXGL's own
+We also call the `collidable` method on the builder, which is just a convenience method for 
+adding a `CollidableComponent` to the entity. This lets the entity take part in FXGL's own
 collision detection. We want the player entity to also be collidable, so we add that call to
 the entity builder for the player entity as well.
 
 
 ### Collision Detection
 
-To facilitate collision detection, we update the initPhysics method to add a collision handler.
+To facilitate collision detection, we update the `initPhysics` method to add a collision handler.
 
 ```java
     @Override
@@ -64,12 +64,12 @@ To facilitate collision detection, we update the initPhysics method to add a col
     }
 ```
 
-The arguments to the CollisionHandler constructor are the types of entities we want to handle
-collisions between. The order is important here. The callback methods, like onCollisionBegin,
+The arguments to the `CollisionHandler` constructor are the types of entities we want to handle
+collisions between. The order is important here. The callback methods, like `onCollisionBegin`,
 will receive their arguments in the same order as specified when calling the constructor. In
 our case, we want to handle collisions between the player and a pill. We override the callback
-method onCollisionBegin that is called just when a collision between two objects has started.
-There are other callbacks like onCollision, that is called on every tick while the collision
+method `onCollisionBegin` that is called just when a collision between two objects has started.
+There are other callbacks like `onCollision`, that is called on every tick while the collision
 is happening.
 
 In the callback method, we simply remove the pill from the game world. That makes the entity
@@ -80,12 +80,12 @@ disappear completely, with view and bounding box and all.
 
 The player should score a number of points for each pill eaten, and we want to keep track of
 that score, and display it in the UI. For that we will use a game variable. Game variables
-are basically just a map from String to Object, a number of global variables used throughout
-the game. In our case, we will only use it in the main App class, but there are benefits with
+are basically just a map from `String` to `Object`, a number of global variables used throughout
+the game. In our case, we will only use it in the main app class, but there are benefits with
 using game variables that we will take advantage of later.
 
 We start by initializing the score to 0. That can be done in, you guessed it, the overridden
-method initGameVars.
+method `initGameVars`.
 
 ```java
     @Override
@@ -95,7 +95,7 @@ method initGameVars.
 ```
 
 Next, we want to increase the score when the player eats a pill, so we update the collision
-handler and add a statement to do that. The inc method is a convenience method that 
+handler and add a statement to do that. The `inc` method is a convenience method that 
 increments (or decrements) an integer game variable.
 
 ```java
@@ -103,7 +103,7 @@ increments (or decrements) an integer game variable.
 ```
 
 The final step is to display the score in the game window. Now we bring back the method
-initUI to initialize a label to display the score.
+`initUI` to initialize a label to display the score.
 
 ```java
     @Override
