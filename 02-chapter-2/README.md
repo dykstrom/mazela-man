@@ -53,7 +53,7 @@ entity factory.
 
 The last thing to note about the new spawn method is that we give the entity a `PhysicsComponent`.
 FXGL is highly componentized, you can add any number of predefined or custom components to an
-entity. All components will receive callbacks when they are added or removed, and on each tick
+entity. All components will receive callbacks when they are added or removed, and on each frame
 during game play. In a later chapter we will create a custom component, but the `PhysicsComponent`
 is one of the predefined components.
 

@@ -100,7 +100,7 @@ animation only once, there are play methods that you can use instead.
 
 The `Component` class also has other callback methods that you can override. The method 
 `onRemoved` is called right before the component is removed from the entity, and the 
-method `onUpdate` is called each tick during game play
+method `onUpdate` is called each frame during game play
 
 If you run the app now, you'll see that although the player is animated, the same animation
 cycle is played all the time. We need to add some more code to change animation according to 

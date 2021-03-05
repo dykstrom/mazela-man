@@ -70,14 +70,7 @@ public class CherrySpawnComponent extends Component {
     }
 
     private void despawnLater(Entity cherry) {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(cherry::removeFromWorld);
-                timer.cancel();
-            }
-        }, 10_000);
+        FXGL.getGameTimer().runOnceAfter(cherry::removeFromWorld, Duration.seconds(10));
     }
 
     private boolean noCherryAt(double x, double y) {
@@ -88,8 +81,8 @@ public class CherrySpawnComponent extends Component {
 }
 ```
 
-The `CherrySpawnComponent` has an `onUpdate` method that is called on every tick. Every
-time this method is called, there is one chance in 1000 to spawn a cherry, if there is
+The `CherrySpawnComponent` has an `onUpdate` method that is called every frame. Every
+time that method is called, there is one chance in 1000 to spawn a cherry, if there is
 not already a cherry at that position. Note that the component does not need to remember
 its own position, because it has access to the entity it is part of, and the entity has 
 the position.
@@ -100,12 +93,11 @@ method in our entity factory. We get back a reference to the created entity, and
 reference is passed to a method that starts a timer that triggers after 10 seconds, and
 then removes the cherry again.
 
-The call to `removeFromWorld` is wrapped in a call to `Platform.runLater`. This time
-we do this to ensure that the call to `removeFromWorld` is performed on the JavaFX 
-Application Thread. JavaFX and FXGL require all calls to the framework to be made on
-the JavaFX Application Thread to work properly. Normally, that is no problem because
-all callback methods are called on this thread, but the timer we create run on its own
-thread in the background.
+Using the built-in game timer has the advantage that the call to `removeFromWorld` is 
+performed on the JavaFX Application Thread. JavaFX and FXGL require all calls to the 
+framework to be made on the JavaFX Application Thread to work properly. Normally, that 
+is no problem because all callback methods are called on this thread, but creating your
+own timer would involve a background thread.
 
 The helper method `noCherryAt` just checks that there is no entity of type `CHERRY` at
 the specified position. An alternative implementation of this method could have retrieved

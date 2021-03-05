@@ -4,11 +4,9 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
-import javafx.application.Platform;
+import javafx.util.Duration;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CherrySpawnComponent extends Component {
 
@@ -24,14 +22,7 @@ public class CherrySpawnComponent extends Component {
     }
 
     private void despawnLater(Entity cherry) {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(cherry::removeFromWorld);
-                timer.cancel();
-            }
-        }, 10_000);
+        FXGL.getGameTimer().runOnceAfter(cherry::removeFromWorld, Duration.seconds(10));
     }
 
     private boolean noCherryAt(double x, double y) {

@@ -111,7 +111,8 @@ of the entity to spawn, as well as some additional data like the width and heigh
 However, in our case, the width and height is taken from the view.
 
 The view of an entity defines how it is represented on the screen. It can be an image as in this case,
-but it can also be a geometrical figure like a circle. The bounding box of an entity defines the outer
+but it can also be a geometrical figure like a circle. In fact, the view can be any JavaFX `Node`, so
+we could make our view a `Label` or a `Button`. The bounding box of an entity defines the outer
 perimeter of the entity, and is used when detecting collisions between entities.
 
 Images that make up the visual part of an entity are called textures. We quickly realize that we 

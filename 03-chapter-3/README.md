@@ -69,7 +69,7 @@ collisions between. The order is important here. The callback methods, like `onC
 will receive their arguments in the same order as specified when calling the constructor. In
 our case, we want to handle collisions between the player and a pill. We override the callback
 method `onCollisionBegin` that is called just when a collision between two objects has started.
-There are other callbacks like `onCollision`, that is called on every tick while the collision
+There are other callbacks like `onCollision`, that is called every frame while the collision
 is happening.
 
 In the callback method, we simply remove the pill from the game world. That makes the entity

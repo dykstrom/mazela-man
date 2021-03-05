@@ -98,7 +98,7 @@ Running the game now will provide us with a nice, albeit very static enemy.
 ### Adding AI
 
 To make blinky move, we will add an update method, and very limited AI. By overriding the
-`onUpdate` method, we can move the ghost entity a little every tick.
+`onUpdate` method, we can move the ghost entity a little every frame.
 
 ```java
     private static final double SPEED = 100.0;
