@@ -25,6 +25,7 @@
         <module>07-chapter-7</module>
         <module>08-chapter-8</module>
         <module>09-chapter-9</module>
+        <module>10-chapter-10</module>
     </modules>
 
     <dependencyManagement>

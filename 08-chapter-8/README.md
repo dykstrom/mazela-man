@@ -40,8 +40,7 @@ player-pill collision handler as it looks with sound effects added:
 ```
 
 This was a short chapter, but then sound in FXGL is not very complicated. Now you can
-proceed to the [next chapter](../09-chapter-9/README.md), which currently is the end of 
-the tutorial.
+proceed to the [next chapter](../09-chapter-9/README.md), where we enable the main menu.
 
 [[Back](../07-chapter-7/README.md)]
 [[Next](../09-chapter-9/README.md)]

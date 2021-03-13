@@ -123,9 +123,8 @@ replace it with something entirely different. `Platform` is a JavaFX class, and 
 technique is used when working with events in JavaFX applications.
 
 The observant reader has by now figured out that the game will crash when the player
-has made it through level 2. Handling that problem gracefully is left as an exercise to 
-the reader. One way could be to [create a main menu](https://github.com/AlmasB/FXGL/wiki/Customizing-Menus-%28FXGL-11%29) 
-that the game would return to after clearing all levels.
+has made it through level 2. Don't worry! We will fix that issue in 
+[chapter 9](../09-chapter-9/README.md).
 
 Adding a new level is done. This is how my level design look in action.
 

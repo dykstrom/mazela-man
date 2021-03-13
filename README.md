@@ -54,7 +54,8 @@ You can also jump directly to a specific chapter:
 * [06 Multiple Levels](06-chapter-6/README.md)
 * [07 Bonus Points](07-chapter-7/README.md)
 * [08 Adding Sound](08-chapter-8/README.md)
-* [09 Conclusion](09-chapter-9/README.md)
+* [09 Main Menu](09-chapter-9/README.md)
+* [10 Conclusion](10-chapter-10/README.md)
 
 
 ## Resources

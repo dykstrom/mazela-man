@@ -42,8 +42,17 @@ it to the actual pill.
 
 We also call the `collidable` method on the builder, which is just a convenience method for 
 adding a `CollidableComponent` to the entity. This lets the entity take part in FXGL's own
-collision detection. We want the player entity to also be collidable, so we add that call to
+collision detection. We want the player entity to also be `collidable`, so we add that call to
 the entity builder for the player entity as well.
+
+```java
+        return entityBuilder(data)
+                .type(EntityType.PLAYER)
+                .viewWithBBox("player.png")
+                .with(physics)
+                .collidable()
+                .build();
+```
 
 
 ### Collision Detection
