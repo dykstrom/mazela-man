@@ -50,12 +50,12 @@ resources folder:
 ### Creating the Level File
 
 An easy way to get started is to copy an "empty" level file from the main resources
-folder to our newly created levels folder. Copy the level file from [here](../reources/empty-level.tmx)
-and give it the name "level1.tmx". You also need to copy the [tilemap](../reources/tilemap.png) 
+folder to our newly created levels folder. Copy the level file from [here](../resources/empty-level.tmx)
+and give it the name "level1.tmx". You also need to copy the [tilemap](../resources/tilemap.png) 
 file to the levels folder. The tilemap file is a PNG file that contains all the images (tiles) 
 that we will use when designing the level. The tilemap file we are going to use looks like this.
 
-![Tilemap File](../reources/tilemap.png)
+![Tilemap File](../resources/tilemap.png)
 
 If you do not have access to the Tiled application, or do not want to edit the level file yourself, 
 you can simply copy [the level file from the next chapter](../01-chapter-1/src/main/resources/assets/levels/level1.tmx) 
@@ -117,7 +117,7 @@ perimeter of the entity, and is used when detecting collisions between entities.
 
 Images that make up the visual part of an entity are called textures. We quickly realize that we 
 are now missing the "player.png" texture needed to make this work. Fortunately, we can copy 
-[player.png](../reources/player.png) to the textures folder.
+[player.png](../resources/player.png) to the textures folder.
 
 While in the entity factory, let's also add another spawn method, to create a black background for
 our game.

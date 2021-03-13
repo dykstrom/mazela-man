@@ -21,11 +21,11 @@ The Player object is the highlighted object close to the bottom.
 
 If you added any new ghosts to the new level, you will have to copy the textures for
 them to the textures folder. All available resources can be found in the main 
-[resources](../reources) folder. I added "pinky", who looks like this:
+[resources](../resources) folder. I added "pinky", who looks like this:
 
-![Pinky Left](../reources/pinky-left.png)
-![Pinky Right](../reources/pinky-right.png)
-![Pinky UpDown](../reources/pinky-up-down.png)
+![Pinky Left](../resources/pinky-left.png)
+![Pinky Right](../resources/pinky-right.png)
+![Pinky UpDown](../resources/pinky-up-down.png)
 
 
 ### Start Level

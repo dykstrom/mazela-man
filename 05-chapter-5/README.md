@@ -27,11 +27,11 @@ to call this object "blinky".
 
 The images we will use for enemy blinky look like this:
 
-![Left](../reources/blinky-left.png)
-![Right](../reources/blinky-right.png)
-![Up-Down](../reources/blinky-up-down.png)
+![Left](../resources/blinky-left.png)
+![Right](../resources/blinky-right.png)
+![Up-Down](../resources/blinky-up-down.png)
 
-Copy them to the textures folder from the main [resources](../reources) folder. If you 
+Copy them to the textures folder from the main [resources](../resources) folder. If you 
 want more than one enemy, we have you covered. The resources folder also contains images
 for pinky, inky, and clyde.
 

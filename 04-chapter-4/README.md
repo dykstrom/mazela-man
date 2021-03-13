@@ -36,13 +36,13 @@ Before we can do any animation, we must create sprite sheets to base the animati
 player character will be animated differently depending on the direction, so we need several 
 sprite sheets. These are the sprite sheets we will use:
 
-![Left](../reources/player-left.png)
+![Left](../resources/player-left.png)
 
-![Right](../reources/player-right.png)
+![Right](../resources/player-right.png)
 
-![Up and Down](../reources/player-up-down.png)
+![Up and Down](../resources/player-up-down.png)
 
-You can copy them from [here](../reources) to the textures folder.
+You can copy them from [here](../resources) to the textures folder.
 
 
 ### AnimatedTexture

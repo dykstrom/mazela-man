@@ -17,7 +17,7 @@ spawn-points in the corners of the level 1 maze, and set the type string to
 
 ![Cherry Spawn Points](docs/cherry-spawn-points.png)
 
-We also need to copy the [cherry image](../reources/cherry.png) to the textures folder.
+We also need to copy the [cherry image](../resources/cherry.png) to the textures folder.
 
 
 ### Entity Factory

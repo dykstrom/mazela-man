@@ -15,7 +15,7 @@ perform in the chapter. Following the tutorial closely will result in code that 
 code contained in the following chapter. Experimentation is encouraged, but if you lose your 
 way in the process, you can always start over with a working code base in the following chapter.
 
-All resources used in the tutorial, and a few extras, can be found [here](reources).
+All resources used in the tutorial, and a few extras, can be found [here](resources).
 
 
 ## Requirements

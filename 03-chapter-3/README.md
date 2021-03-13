@@ -33,7 +33,7 @@ In the entity factory, we add the corresponding spawn method.
 ```
 
 We need to create a new enum constant in `EntityType`, and we need to copy the pill image to the
-textures folder from [here](../reources/pill.png).
+textures folder from [here](../resources/pill.png).
 
 This time we don't create the bounding box automatically from the image. That is because the 
 image is 20x20 pixels, but the actual pill is only 9x9 pixels. To make the collision look 
