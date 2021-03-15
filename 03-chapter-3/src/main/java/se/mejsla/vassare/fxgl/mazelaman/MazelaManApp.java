@@ -8,8 +8,6 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import javafx.scene.input.KeyCode;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 public class MazelaManApp extends GameApplication {
 
     private static final int HEIGHT = 600;
@@ -27,14 +25,14 @@ public class MazelaManApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMap("level1.tmx");
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMap("level1.tmx");
     }
 
     @Override
     protected void initPhysics() {
-        getPhysicsWorld().setGravity(0, 0);
+        FXGL.getPhysicsWorld().setGravity(0, 0);
     }
 
     @Override

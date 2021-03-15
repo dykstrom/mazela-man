@@ -33,7 +33,7 @@ the entity factory. Let's add a spawn method for walls.
 ```java
     @Spawns("Wall")
     public Entity spawnWall(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.WALL)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
@@ -82,7 +82,7 @@ properties below will be described. There are many more properties to play with 
         bd.setType(BodyType.DYNAMIC);
         physics.setBodyDef(bd);
 
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox("player.png")
                 .with(physics)
@@ -117,7 +117,7 @@ of gravity.
 ```java
     @Override
     protected void initPhysics() {
-        getPhysicsWorld().setGravity(0, 0);
+        FXGL.getPhysicsWorld().setGravity(0, 0);
     }
 ```
 

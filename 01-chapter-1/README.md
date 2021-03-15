@@ -24,7 +24,7 @@ the builder method `type`.
 ```java
     @Spawns("Player")
     public Entity spawnPlayer(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
             .type(EntityType.PLAYER)
             .viewWithBBox("player.png")
             .build();

@@ -1,5 +1,6 @@
 package se.mejsla.vassare.fxgl.mazelaman;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
@@ -15,14 +16,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
-
 @SuppressWarnings("unused")
 public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Background")
     public Entity spawnBackground(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .view(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.BLACK))
                 .with(new IrremovableComponent())
                 .zIndex(-100)
@@ -31,7 +30,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Pill")
     public Entity spawnPill(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PILL)
                 .view("pill.png")
                 // Make hit box a little smaller than the tile to fit the visible part of the image
@@ -49,7 +48,7 @@ public class MazelaManFactory implements EntityFactory {
         bd.setType(BodyType.DYNAMIC);
         physics.setBodyDef(bd);
 
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(20, 20)))
                 .with(physics)
@@ -60,7 +59,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Wall")
     public Entity spawnWall(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.WALL)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())

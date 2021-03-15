@@ -7,8 +7,6 @@ import com.almasb.fxgl.texture.Texture;
 
 import java.util.Random;
 
-import static com.almasb.fxgl.dsl.FXGL.spawn;
-
 public class GhostComponent extends Component {
 
     private static final double SPEED = 100.0;
@@ -83,6 +81,6 @@ public class GhostComponent extends Component {
 
     public void respawn() {
         entity.removeFromWorld();
-        spawn("Ghost", new SpawnData(x, y).put("name", name));
+        FXGL.spawn("Ghost", new SpawnData(x, y).put("name", name));
     }
 }

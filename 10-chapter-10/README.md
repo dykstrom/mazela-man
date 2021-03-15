@@ -8,7 +8,7 @@ Some obvious features to add or improve:
 
 * Power pills that enable the protagonist to hunt the ghosts
 * Improved ghost AI - each ghost having its own personality
-* Keeping a high score (the FXGL SaveLoadService may come in handy here)
+* Keeping a high score (the FXGL `SaveLoadService` may come in handy here)
 
 FXGL contains much more than we have covered in this tutorial. Some examples of 
 functionality that we have not looked at:

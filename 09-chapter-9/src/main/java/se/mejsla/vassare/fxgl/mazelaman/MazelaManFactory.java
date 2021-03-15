@@ -1,5 +1,6 @@
 package se.mejsla.vassare.fxgl.mazelaman;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
@@ -15,14 +16,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
-
 @SuppressWarnings("unused")
 public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Background")
     public Entity spawnBackground(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .view(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.BLACK))
                 .with(new IrremovableComponent())
                 .zIndex(-100)
@@ -31,14 +30,14 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("CherrySpawnPoint")
     public Entity spawnCherrySpawnPoint(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .with(new CherrySpawnComponent())
                 .build();
     }
 
     @Spawns("Cherry")
     public Entity spawnCherry(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.CHERRY)
                 .viewWithBBox("cherry.png")
                 .collidable()
@@ -47,7 +46,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Pill")
     public Entity spawnPill(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PILL)
                 .view("pill.png")
                 // Make hit box a little smaller than the tile to fit the visible part of the image
@@ -65,7 +64,7 @@ public class MazelaManFactory implements EntityFactory {
         bd.setType(BodyType.DYNAMIC);
         physics.setBodyDef(bd);
 
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(20, 20)))
                 .with(physics)
@@ -76,7 +75,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Ghost")
     public Entity spawnGhost(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.GHOST)
                 .bbox(new HitBox(BoundingShape.box(20, 20)))
                 .with(new GhostComponent(data.get("name"), data.getX(), data.getY()))
@@ -86,7 +85,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Wall")
     public Entity spawnWall(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.WALL)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())

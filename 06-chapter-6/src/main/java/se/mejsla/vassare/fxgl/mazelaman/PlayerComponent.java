@@ -8,8 +8,6 @@ import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.util.Duration;
 
-import static com.almasb.fxgl.dsl.FXGL.spawn;
-
 public class PlayerComponent extends Component {
 
     private static final int SPEED = 150;
@@ -70,6 +68,6 @@ public class PlayerComponent extends Component {
 
     public void respawn() {
         entity.removeFromWorld();
-        spawn("Player", new SpawnData(x, y));
+        FXGL.spawn("Player", new SpawnData(x, y));
     }
 }

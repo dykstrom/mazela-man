@@ -29,14 +29,14 @@ spawn-point, and one for the cherries.
 ```java
     @Spawns("CherrySpawnPoint")
     public Entity spawnCherrySpawnPoint(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .with(new CherrySpawnComponent())
                 .build();
     }
 
     @Spawns("Cherry")
     public Entity spawnCherry(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.CHERRY)
                 .viewWithBBox("cherry.png")
                 .collidable()

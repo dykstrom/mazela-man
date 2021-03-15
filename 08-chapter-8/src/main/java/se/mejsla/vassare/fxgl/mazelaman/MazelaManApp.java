@@ -15,8 +15,6 @@ import javafx.scene.text.Font;
 
 import java.util.Map;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 public class MazelaManApp extends GameApplication {
 
     private static final int HEIGHT = 600;
@@ -40,15 +38,15 @@ public class MazelaManApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
         initLevel();
     }
 
     private void initLevel() {
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMap("level" + geti("level") + ".tmx");
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMap("level" + FXGL.geti("level") + ".tmx");
         // Store the number of pills on this level
-        FXGL.set("pills", getGameWorld().getEntitiesByType(EntityType.PILL).size());
+        FXGL.set("pills", FXGL.getGameWorld().getEntitiesByType(EntityType.PILL).size());
     }
 
     @Override
@@ -76,7 +74,7 @@ public class MazelaManApp extends GameApplication {
                 pill.removeFromWorld();
                 FXGL.inc("score", 10);
                 FXGL.inc("pills", -1);
-                if (geti("pills") == 0) {
+                if (FXGL.geti("pills") == 0) {
                     FXGL.inc("level", 1);
                     Platform.runLater(() -> initLevel());
                 }

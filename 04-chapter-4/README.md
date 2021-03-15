@@ -22,7 +22,7 @@ That is because the `PlayerComponent` will take care of the view.
     @Spawns("Player")
     public Entity spawnPlayer(SpawnData data) {
         ...
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(20, 20)))
                 .with(physics)

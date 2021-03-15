@@ -43,7 +43,7 @@ Next we want to create a spawn method for enemies. In the `MazelaManFactory`, we
 ```java
     @Spawns("Ghost")
     public Entity spawnGhost(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.GHOST)
                 .bbox(new HitBox(BoundingShape.box(20, 20)))
                 .with(new GhostComponent(data.get("name"), data.getX(), data.getY()))
@@ -140,7 +140,7 @@ to the `spawnWall` method fixes that.
 ```java
     @Spawns("Wall")
     public Entity spawnWall(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.WALL)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())
@@ -261,7 +261,7 @@ public class PlayerComponent extends Component {
     
     public void respawn() {
         entity.removeFromWorld();
-        spawn("Player", new SpawnData(x, y));
+        FXGL.spawn("Player", new SpawnData(x, y));
     }
 }
 ```
@@ -273,7 +273,7 @@ public class GhostComponent extends Component {
     
     public void respawn() {
         entity.removeFromWorld();
-        spawn("Ghost", new SpawnData(x, y).put("name", name));
+        FXGL.spawn("Ghost", new SpawnData(x, y).put("name", name));
     }
 }
 ```

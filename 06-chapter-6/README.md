@@ -62,13 +62,13 @@ integer game variable.
 
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
         initLevel();
     }
 
     private void initLevel() {
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMap("level" + geti("level") + ".tmx");
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMap("level" + FXGL.geti("level") + ".tmx");
     }
 ```
 
@@ -96,7 +96,7 @@ the `initLevel` method after we have loaded the level. We simply get all entitie
 
 ```java
     // Store the number of pills on this level
-    FXGL.set("pills", getGameWorld().getEntitiesByType(EntityType.PILL).size());
+    FXGL.set("pills", FXGL.getGameWorld().getEntitiesByType(EntityType.PILL).size());
 ```
 
 Next, we modify the player-pill collision handler to decrease the number of pills each 
@@ -110,7 +110,7 @@ next level.
         pill.removeFromWorld();
         FXGL.inc("score", 10);
         FXGL.inc("pills", -1);
-        if (geti("pills") == 0) {
+        if (FXGL.geti("pills") == 0) {
             FXGL.inc("level", 1);
             Platform.runLater(() -> initLevel());
         }

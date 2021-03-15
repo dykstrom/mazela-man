@@ -22,7 +22,7 @@ In the entity factory, we add the corresponding spawn method.
 ```java
     @Spawns("Pill")
     public Entity spawnPill(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PILL)
                 .view("pill.png")
                 // Make hit box a little smaller than the tile to fit the visible part of the image
@@ -46,7 +46,7 @@ collision detection. We want the player entity to also be `collidable`, so we ad
 the entity builder for the player entity as well.
 
 ```java
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .type(EntityType.PLAYER)
                 .viewWithBBox("player.png")
                 .with(physics)

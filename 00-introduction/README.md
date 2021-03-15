@@ -96,7 +96,7 @@ public class MazelaManFactory implements EntityFactory {
 
     @Spawns("Player")
     public Entity spawnPlayer(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .viewWithBBox("player.png")
                 .build();
     }
@@ -125,7 +125,7 @@ our game.
 ```java
     @Spawns("Background")
     public Entity spawnBackground(SpawnData data) {
-        return entityBuilder(data)
+        return FXGL.entityBuilder(data)
                 .view(new Rectangle(data.<Integer>get("width"), data.<Integer>get("height"), Color.BLACK))
                 .with(new IrremovableComponent())
                 .zIndex(-100)
@@ -147,9 +147,9 @@ method to initialize the game.
 ```java
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMap("level1.tmx");
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMap("level1.tmx");
     }
 ```
 

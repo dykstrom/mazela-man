@@ -2,9 +2,8 @@ package se.mejsla.vassare.fxgl.mazelaman;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.SpawnData;
-
-import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class MazelaManApp extends GameApplication {
 
@@ -21,9 +20,9 @@ public class MazelaManApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMap("level1.tmx");
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMap("level1.tmx");
     }
 
     public static void main(String[] args) {

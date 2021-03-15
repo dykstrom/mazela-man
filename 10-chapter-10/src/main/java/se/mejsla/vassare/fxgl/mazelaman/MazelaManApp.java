@@ -15,8 +15,6 @@ import javafx.scene.text.Font;
 
 import java.util.Map;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-
 public class MazelaManApp extends GameApplication {
 
     private static final int HEIGHT = 600;
@@ -42,20 +40,20 @@ public class MazelaManApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(new MazelaManFactory());
+        FXGL.getGameWorld().addEntityFactory(new MazelaManFactory());
         initLevel();
     }
 
     private void initLevel() {
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
         setLevelFromMapOrGameOver();
         // Store the number of pills on this level
-        FXGL.set("pills", getGameWorld().getEntitiesByType(EntityType.PILL).size());
+        FXGL.set("pills", FXGL.getGameWorld().getEntitiesByType(EntityType.PILL).size());
     }
 
     private void setLevelFromMapOrGameOver() {
         try {
-            setLevelFromMap("level" + geti("level") + ".tmx");
+            FXGL.setLevelFromMap("level" + FXGL.geti("level") + ".tmx");
         } catch (IllegalArgumentException e) {
             gameOver(true);
         }
@@ -71,7 +69,7 @@ public class MazelaManApp extends GameApplication {
                 .append(FXGL.geti("score"))
                 .append("\nFinal level: ")
                 .append(FXGL.geti("level"));
-        getDialogService().showMessageBox(builder.toString(), () -> FXGL.getGameController().gotoMainMenu());
+        FXGL.getDialogService().showMessageBox(builder.toString(), () -> FXGL.getGameController().gotoMainMenu());
     }
 
     @Override
@@ -106,7 +104,7 @@ public class MazelaManApp extends GameApplication {
                 pill.removeFromWorld();
                 FXGL.inc("score", 10);
                 FXGL.inc("pills", -1);
-                if (geti("pills") == 0) {
+                if (FXGL.geti("pills") == 0) {
                     FXGL.inc("level", 1);
                     FXGL.play("level.wav");
                     Platform.runLater(() -> initLevel());
@@ -126,7 +124,7 @@ public class MazelaManApp extends GameApplication {
             protected void onCollisionBegin(Entity player, Entity ghost) {
                 FXGL.play("death.wav");
                 FXGL.inc("lives", -1);
-                if (geti("lives") > 0) {
+                if (FXGL.geti("lives") > 0) {
                     FXGL.getGameWorld()
                             .getEntitiesByType(EntityType.GHOST)
                             .forEach(entity -> entity.getComponent(GhostComponent.class).respawn());

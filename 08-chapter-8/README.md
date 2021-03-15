@@ -31,7 +31,7 @@ player-pill collision handler as it looks with sound effects added:
         pill.removeFromWorld();
         FXGL.inc("score", 10);
         FXGL.inc("pills", -1);
-        if (geti("pills") == 0) {
+        if (FXGL.geti("pills") == 0) {
             FXGL.inc("level", 1);
             FXGL.play("level.wav");
             Platform.runLater(() -> initLevel());

@@ -44,7 +44,7 @@ and some counting in a collision handler.
         protected void onCollisionBegin(Entity player, Entity ghost) {
             FXGL.play("death.wav");
             FXGL.inc("lives", -1);
-            if (geti("lives") > 0) {
+            if (FXGL.geti("lives") > 0) {
                 FXGL.getGameWorld()
                         .getEntitiesByType(EntityType.GHOST)
                         .forEach(entity -> entity.getComponent(GhostComponent.class).respawn());
@@ -73,17 +73,17 @@ Instead of calling `setLevelFromMap` directly from `initLevel`, we call a new me
 
 ```java
     private void initLevel() {
-        spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
-        setLevelFromMapOrGameOver();
+        FXGL.spawn("Background", new SpawnData(0, 0).put("width", WIDTH).put("height", HEIGHT));
+        FXGL.setLevelFromMapOrGameOver();
         // Store the number of pills on this level
-        FXGL.set("pills", getGameWorld().getEntitiesByType(EntityType.PILL).size());
+        FXGL.set("pills", FXGL.getGameWorld().getEntitiesByType(EntityType.PILL).size());
     }
 ```
 
 ```java
     private void setLevelFromMapOrGameOver() {
         try {
-            setLevelFromMap("level" + geti("level") + ".tmx");
+            setLevelFromMap("level" + FXGL.geti("level") + ".tmx");
         } catch (IllegalArgumentException e) {
             gameOver(true);
         }
@@ -107,7 +107,7 @@ In the `gameOver` method we display a message dialog before returning to the mai
                 .append(FXGL.geti("score"))
                 .append("\nFinal level: ")
                 .append(FXGL.geti("level"));
-        getDialogService().showMessageBox(builder.toString(), () -> FXGL.getGameController().gotoMainMenu());
+        FXGL.getDialogService().showMessageBox(builder.toString(), () -> FXGL.getGameController().gotoMainMenu());
     }
 ```
 
