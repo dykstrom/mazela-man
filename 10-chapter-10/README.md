@@ -13,6 +13,7 @@ Some obvious features to add or improve:
 FXGL contains much more than we have covered in this tutorial. Some examples of 
 functionality that we have not looked at:
 
+* Event bus
 * Mouse support
 * Parallax backgrounds
 * Cutscenes

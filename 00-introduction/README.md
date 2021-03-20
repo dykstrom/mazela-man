@@ -23,11 +23,22 @@ only two of them, `initSettings` to set some basic settings like the window size
 
 The `Label` class, and the `Font` class used in `initUI` are the normal JavaFX `Label` and 
 `Font` classes used in any JavaFX application. Thus, having some knowledge of JavaFX will 
-help you when developing a game with FXGL, but it is not necessary
+help you when developing a game with FXGL, but it is not necessary.
 
 The call to `FXGL.addUINode` will add the label at the specified location and make it visible.
 The class `FXGL` is a facade that gives us access to much of FXGL, and we will see many calls
 to the static methods in class `FXGL`.
+
+
+## Basic Game
+
+Now we will turn this app into a very basic game that displays the first level and the player
+but not much more. We will create a level file using an external editor, and create new classes
+and methods to set up the level in the game.
+
+Some people have found it easier to start with the code from chapter 1 instead, given that the
+structure of the game is already in place. So as an alternative to doing the work in this 
+introductory chapter, you can check out the code of chapter 1 while reading this text.
 
 
 ## Creating a Level
@@ -165,13 +176,43 @@ If you run your application again, you will see something that looks like this.
 ![Result](docs/introduction-result.png)
 
 If you instead get an error message similar to below, you probably need to run Maven to copy
-the resources to the target folder. You can do this in your IDE, or on the command line:
-
-```shell
-mvn compile
-```
+the resources to the target folder. Note that you need to re-run Maven each time you have added
+new assets to the chapter you are working on.
 
 ![Resource Error](docs/resource-error.png)
+
+You can run Maven in your IDE, or on the command line. If you run from the command line, make 
+sure that the correct Java version is first in your path. Running Maven successfully will 
+produce output similar to this:
+
+```
+> mvn compile
+[INFO] Scanning for projects...
+
+[... a lot of output ...]
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for mazela-man 0.1.0-SNAPSHOT:
+[INFO]
+[INFO] mazela-man ......................................... SUCCESS [  0.008 s]
+[INFO] 00-introduction .................................... SUCCESS [  1.441 s]
+[INFO] 01-chapter-1 ....................................... SUCCESS [  0.353 s]
+[INFO] 02-chapter-2 ....................................... SUCCESS [  0.416 s]
+[INFO] 03-chapter-3 ....................................... SUCCESS [  0.374 s]
+[INFO] 04-chapter-4 ....................................... SUCCESS [  0.360 s]
+[INFO] 05-chapter-5 ....................................... SUCCESS [  0.368 s]
+[INFO] 06-chapter-6 ....................................... SUCCESS [  0.366 s]
+[INFO] 07-chapter-7 ....................................... SUCCESS [  0.439 s]
+[INFO] 08-chapter-8 ....................................... SUCCESS [  0.418 s]
+[INFO] 09-chapter-9 ....................................... SUCCESS [  0.376 s]
+[INFO] 10-chapter-10 ...................................... SUCCESS [  0.372 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.478 s
+[INFO] Finished at: 2021-03-16T16:28:50+01:00
+[INFO] ------------------------------------------------------------------------
+```
 
 This concludes the introduction of the tutorial. Now you can proceed to [chapter 1](../01-chapter-1/README.md).
 

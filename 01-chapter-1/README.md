@@ -10,7 +10,7 @@ input, but in this tutorial we will only use keyboard input.
 To move the player entity, we first must retrieve it from the game world somehow. To do this
 we need to define an enum that serves as the entity type. Do not confuse the entity type with 
 the type string used in Tiled to make FXGL spawn an entity. The enum `EntityType` is used when
-finding entities in a live game world.
+finding entities in a live game world. Let's create a new file with the enum `EntityType` in it.
 
 ```java
 public enum EntityType {

@@ -57,7 +57,7 @@ entity. All components will receive callbacks when they are added or removed, an
 during game play. In a later chapter we will create a custom component, but the `PhysicsComponent`
 is one of the predefined components.
 
-Adding a `PhysicsComponent to an entity means giving up control of the entity. It will now be
+Adding a `PhysicsComponent` to an entity means giving up control of the entity. It will now be
 managed by the physics engine. You can no longer move the entity by calling the translate 
 methods. Instead, you will have to work with forces and velocities. It also means that the 
 entity will interact with other entities managed by the physics engine. We will use that by

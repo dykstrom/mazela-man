@@ -6,7 +6,8 @@ animation code in one place, we begin by creating a custom component for the pla
 
 ### PlayerComponent
 
-Custom components in FXGL inherit from the class `Component`.
+Custom components in FXGL inherit from the class `Component`. Make sure to import the 
+`Component` class from FXGL, and not from AWT.
 
 ```java
 public class PlayerComponent extends Component {
